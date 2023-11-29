@@ -2,6 +2,7 @@ package com.github.dixtdf.archive.manager.action.utils
 
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.PlatformDataKeys
+import com.intellij.openapi.vfs.LocalFileSystem
 import net.sf.sevenzipjbinding.SevenZip
 import net.sf.sevenzipjbinding.SevenZipException
 import net.sf.sevenzipjbinding.impl.RandomAccessFileInStream
@@ -54,6 +55,7 @@ class ExtractUtils {
                                 }
                                 index += 1
                             }
+                            LocalFileSystem.getInstance().refresh(false)
                             NotificationUtils.info("执行完成", "执行完成")
                         } catch (e: SevenZipException) {
                             NotificationUtils.error("执行出错啦", "Error occurs: ${e.message.toString()}")

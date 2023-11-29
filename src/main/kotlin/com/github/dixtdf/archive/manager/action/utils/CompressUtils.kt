@@ -6,7 +6,7 @@ import com.intellij.ide.projectView.impl.nodes.PsiFileNode
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.actionSystem.PlatformDataKeys
-import com.intellij.openapi.vfs.VirtualFileManager
+import com.intellij.openapi.vfs.LocalFileSystem
 import net.sf.sevenzipjbinding.*
 import net.sf.sevenzipjbinding.impl.RandomAccessFileOutStream
 import org.apache.commons.collections.CollectionUtils
@@ -136,6 +136,7 @@ class CompressUtils {
                                         password = password
                                     )
                                 )
+                                LocalFileSystem.getInstance().refresh(false)
                                 NotificationUtils.info("执行完成", "执行完成")
                                 success = true
                             } catch (e: SevenZipException) {
@@ -180,7 +181,6 @@ class CompressUtils {
                         }
                     }
                 )
-                VirtualFileManager.getInstance().refreshAndFindFileByUrl(FilenameUtils.getFullPath(currentFilePath))
             } else {
                 NotificationUtils.error("执行出错啦", "您选择的文件可能不存在，请重试")
             }

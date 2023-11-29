@@ -9,10 +9,7 @@ import com.intellij.openapi.actionSystem.PlatformDataKeys
 import com.intellij.openapi.fileChooser.FileChooserDescriptor
 import com.intellij.openapi.fileChooser.FileChooserDialog
 import com.intellij.openapi.fileChooser.FileChooserFactory
-import com.intellij.openapi.vfs.LocalFileSystem
-import com.intellij.openapi.vfs.VirtualFileManager
 import org.apache.commons.io.FilenameUtils
-import java.io.File
 import java.nio.file.FileSystems
 
 
@@ -45,10 +42,6 @@ class UnPackFolderAction : AnAction() {
                     event
                 )
             }
-
-            val directory = LocalFileSystem.getInstance()
-                .findFileByIoFile(File(FilenameUtils.getFullPath(compressSeparatorsFileName)))
-            VirtualFileManager.getInstance().refreshAndFindFileByUrl(directory!!.url)
         } else {
             event.presentation.isVisible = false
         }

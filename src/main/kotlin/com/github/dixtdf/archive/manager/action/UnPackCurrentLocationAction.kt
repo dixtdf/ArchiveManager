@@ -5,10 +5,7 @@ import com.github.dixtdf.archive.manager.action.utils.MessageUtils
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
-import com.intellij.openapi.vfs.LocalFileSystem
-import com.intellij.openapi.vfs.VirtualFileManager
 import org.apache.commons.io.FilenameUtils
-import java.io.File
 import java.nio.file.FileSystems
 
 class UnPackCurrentLocationAction : AnAction() {
@@ -30,9 +27,6 @@ class UnPackCurrentLocationAction : AnAction() {
                 ) + FileSystems.getDefault().separator,
                 event
             )
-            val directory = LocalFileSystem.getInstance()
-                .findFileByIoFile(File(FilenameUtils.getFullPath(compressSeparatorsFileName)))
-            VirtualFileManager.getInstance().refreshAndFindFileByUrl(directory!!.url)
         } else {
             event.presentation.isVisible = false
         }

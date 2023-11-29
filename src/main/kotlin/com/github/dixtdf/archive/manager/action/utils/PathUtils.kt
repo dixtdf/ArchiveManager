@@ -14,6 +14,15 @@ class PathUtils {
             }
         }
 
+        fun checkFullPath(fullPath: String, index: Int): Int {
+            if (File("$fullPath$index").exists()) {
+                var i = index + 1
+                return checkFullPath(fullPath, i)
+            } else {
+                return index
+            }
+        }
+
         fun findCommonPath(paths: List<String>): String {
             if (paths.isEmpty()) {
                 return ""

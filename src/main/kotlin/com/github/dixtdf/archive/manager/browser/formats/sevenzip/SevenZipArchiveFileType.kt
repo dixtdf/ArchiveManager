@@ -16,9 +16,9 @@ class SevenZipArchiveFileType : BaseArchiveFileType {
 
     override fun getCharset(file: VirtualFile, content: ByteArray): String? = null
 
-    override fun getName() = "ARCHIVE_7ZIP"
+    override fun getName() = "ARCHIVE_MANAGER"
 
-    override fun getDescription() = "Archive (Archive Browser)"
+    override fun getDescription() = "ARCHIVE_MANAGER"
 
     override fun isBinary() = true
 

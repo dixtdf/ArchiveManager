@@ -6,6 +6,19 @@
 
     <depends>com.intellij.modules.platform</depends>
 
+    <description>
+        允许在工程内直接进行压缩和解压
+
+        压缩目前仅支持7z;zip;tar;
+
+        集成Archive browser文件查看功能
+
+        据不完全统计支持直接查看的文件格式:
+        7z;arj;bz2;cab;chm;cpio;deb;dmg;ext;fat;gem;gz;hfs;iso;lzh;lzma;msi;ntfs;rar;rpm;sfs;squashfs;tZ;taZ;tar;tar;taz;tb2;tbz;tbz2;tgz;tlz;tlz;tlz;txz;tz2;tzst;udf;udf;uefi;vdi;vhd;vmdk;wim;xar;xz;z;
+
+        当前还有一些问题正在解决
+    </description>
+
     <resource-bundle>messages.Language</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
@@ -13,7 +26,7 @@
 
         <treeStructureProvider
                 implementation="com.github.dixtdf.archive.manager.browser.ArchivePluginStructureProvider"/>
-        <fileType name="ARCHIVE_SEVENZIP"
+        <fileType name="ARCHIVE_MANAGER"
                   extensions="7z;arj;bz2;cab;chm;cpio;deb;dmg;ext;fat;gem;gz;hfs;iso;lzh;lzma;msi;ntfs;rar;rpm;sfs;squashfs;tZ;taZ;tar;tar;taz;tb2;tbz;tbz2;tgz;tlz;tlz;tlz;txz;tz2;tzst;udf;udf;uefi;vdi;vhd;vmdk;wim;xar;xz;z"
                   fieldName="INSTANCE"
                   implementationClass="com.github.dixtdf.archive.manager.browser.formats.sevenzip.SevenZipArchiveFileType"/>

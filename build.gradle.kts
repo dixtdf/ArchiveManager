@@ -75,14 +75,6 @@ tasks {
         gradleVersion = properties("gradleVersion").get()
     }
 
-    withType<JavaCompile> {
-        options.encoding = "utf-8"
-    }
-
-    withType<JavaExec> {
-        systemProperty("file.encoding", "utf-8")
-    }
-
     patchPluginXml {
         version = properties("pluginVersion").get()
         sinceBuild = properties("pluginSinceBuild").get()

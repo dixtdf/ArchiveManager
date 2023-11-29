@@ -1,0 +1,42 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <id>com.github.dixtdf.archive.manager</id>
+    <name>ArchiveManager</name>
+    <vendor>dixtdf</vendor>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <resource-bundle>messages.Language</resource-bundle>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <notificationGroup id="CompressCustomNotificationGroup" displayType="BALLOON"/>
+
+        <treeStructureProvider
+                implementation="com.github.dixtdf.archive.manager.browser.ArchivePluginStructureProvider"/>
+        <fileType name="ARCHIVE_SEVENZIP"
+                  extensions="7z;arj;bz2;cab;chm;cpio;deb;dmg;ext;fat;gem;gz;hfs;iso;lzh;lzma;msi;ntfs;rar;rpm;sfs;squashfs;tZ;taZ;tar;tar;taz;tb2;tbz;tbz2;tgz;tlz;tlz;tlz;txz;tz2;tzst;udf;udf;uefi;vdi;vhd;vmdk;wim;xar;xz;z"
+                  fieldName="INSTANCE"
+                  implementationClass="com.github.dixtdf.archive.manager.browser.formats.sevenzip.SevenZipArchiveFileType"/>
+        <virtualFileSystem
+                implementationClass="com.github.dixtdf.archive.manager.browser.formats.sevenzip.SevenZipArchiveFileSystemImpl"
+                key="7z"/>
+    </extensions>
+
+    <actions>
+        <action class="com.github.dixtdf.archive.manager.action.CompressZipAction" id="Pack.CompressSevenZipAction"/>
+        <action class="com.github.dixtdf.archive.manager.action.CompressSevenZipAction" id="Pack.CompressZipAction"/>
+        <action class="com.github.dixtdf.archive.manager.action.CompressTarAction" id="Pack.CompressTarAction"/>
+        <action class="com.github.dixtdf.archive.manager.action.UnPackCurrentLocationAction"
+                id="Pack.UnPackCurrentLocationAction"/>
+        <action class="com.github.dixtdf.archive.manager.action.UnPackFolderAction" id="Pack.UnPackFolderAction"/>
+        <group id="Pack" text="unpack" popup="true">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+            <reference id="Pack.CompressSevenZipAction"/>
+            <reference id="Pack.CompressZipAction"/>
+            <reference id="Pack.CompressTarAction"/>
+            <reference id="Pack.UnPackCurrentLocationAction"/>
+            <reference id="Pack.UnPackFolderAction"/>
+        </group>
+    </actions>
+
+</idea-plugin>

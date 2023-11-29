@@ -30,7 +30,7 @@ class CompressUtils {
 
         fun compress(e: AnActionEvent, extension: String, archiveFormat: ArchiveFormat, password: String?) {
             val currentFile = e.getData(CommonDataKeys.VIRTUAL_FILE)?.canonicalFile;
-            val selectedItems = e.dataContext.getData("selectedItems") as? Array<Object>
+            val selectedItems = e.dataContext.getData("selectedItems") as? Array<Any>
             if (currentFile != null && currentFile.exists() && !selectedItems.isNullOrEmpty()) {
                 // 在当前文件夹下添加选中的文件
                 val currentFilePath = FilenameUtils.separatorsToSystem(currentFile.path)
@@ -80,7 +80,7 @@ class CompressUtils {
                                     }
                                 }.filter { it != null }.collect(Collectors.toList())
                                 val addZipPathList = addZipFile.stream().map { it?.path }.collect(Collectors.toList())
-                                val findCommonPath = PathUtils.findCommonPath(addZipPathList as List<String>)
+                                val findCommonPath = PathUtils.findCommonPath(addZipPathList as MutableList<String>)
 
                                 val indexOf = currentFilePath.indexOf(findCommonPath)
                                 var samePath = ""

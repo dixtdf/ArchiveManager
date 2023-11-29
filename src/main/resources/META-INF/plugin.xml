@@ -29,7 +29,7 @@
         <action class="com.github.dixtdf.archive.manager.action.UnPackCurrentLocationAction"
                 id="Pack.UnPackCurrentLocationAction"/>
         <action class="com.github.dixtdf.archive.manager.action.UnPackFolderAction" id="Pack.UnPackFolderAction"/>
-        <group id="Pack" text="unpack" popup="true">
+        <group id="Pack" popup="true" class="com.github.dixtdf.archive.manager.action.PackGroupAction">
             <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
             <reference id="Pack.CompressSevenZipAction"/>
             <reference id="Pack.CompressZipAction"/>

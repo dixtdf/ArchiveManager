@@ -65,9 +65,9 @@ class CompressUtils {
                             } else {
                                 var addZipFile = Arrays.stream(selectedItems).flatMap {
                                     when (it) {
-                                        is PsiFileNode -> Stream.of(File((it as PsiFileNode).virtualFile?.canonicalPath))
+                                        is PsiFileNode -> Stream.of(File((it as PsiFileNode).virtualFile?.canonicalPath!!))
                                         is PsiDirectoryNode -> {
-                                            val file = File((it as PsiDirectoryNode).virtualFile?.canonicalPath)
+                                            val file = File((it as PsiDirectoryNode).virtualFile?.canonicalPath!!)
                                             val listFiles = FileUtils.listFiles(
                                                 file,
                                                 null,

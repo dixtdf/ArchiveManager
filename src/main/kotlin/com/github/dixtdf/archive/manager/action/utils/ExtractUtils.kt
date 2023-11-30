@@ -8,6 +8,7 @@ import net.sf.sevenzipjbinding.SevenZipException
 import net.sf.sevenzipjbinding.impl.RandomAccessFileInStream
 import net.sf.sevenzipjbinding.impl.RandomAccessFileOutStream
 import net.sf.sevenzipjbinding.simple.ISimpleInArchive
+import org.apache.commons.lang3.StringUtils
 import java.io.File
 import java.io.IOException
 import java.io.RandomAccessFile
@@ -18,7 +19,7 @@ import java.math.RoundingMode
 class ExtractUtils {
 
     companion object {
-        fun extract(fileName: String, fullPath: String, event: AnActionEvent) {
+        fun extract(fileName: String, fullPath: String, password: String?, event: AnActionEvent) {
             TaskUtils.compressBackgroundable(project = event.getData(PlatformDataKeys.PROJECT)!!,
                 run = { indicator ->
                     run {
@@ -49,7 +50,11 @@ class ExtractUtils {
                                 var randomAccessFileOutStream: RandomAccessFileOutStream? = null
                                 try {
                                     randomAccessFileOutStream = RandomAccessFileOutStream(RandomAccessFile(file, "rw"))
-                                    item.extractSlow(randomAccessFileOutStream)
+                                    if (StringUtils.isEmpty(password)) {
+                                        item.extractSlow(randomAccessFileOutStream)
+                                    } else {
+                                        item.extractSlow(randomAccessFileOutStream, password)
+                                    }
                                 } finally {
                                     randomAccessFileOutStream?.close()
                                 }

@@ -46,17 +46,18 @@ class UnPackCurrentLocationAction : AnAction() {
                 ExtractUtils.extract(
                     psiFileNodePath,
                     "$fullPath$index${FileSystems.getDefault().separator}",
+                    null,
                     event
                 )
             } else {
                 ExtractUtils.extract(
                     psiFileNodePath,
                     fullPath + FileSystems.getDefault().separator,
+                    null,
                     event
                 )
             }
         }
-
     }
 
 }

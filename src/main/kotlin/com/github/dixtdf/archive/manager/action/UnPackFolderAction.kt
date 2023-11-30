@@ -6,7 +6,6 @@ import com.github.dixtdf.archive.manager.action.utils.PathUtils
 import com.intellij.ide.projectView.impl.nodes.PsiFileNode
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
-import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.actionSystem.PlatformDataKeys
 import com.intellij.openapi.fileChooser.FileChooserDescriptor
 import com.intellij.openapi.fileChooser.FileChooserDialog
@@ -27,7 +26,16 @@ class UnPackFolderAction : AnAction() {
                 else -> false
             }
         }
-        e.presentation.text = MessageUtils().messages("unPackFolderAction")
+        val sb = StringBuilder()
+        selectedItems!!.forEachIndexed { index, item ->
+            when (item) {
+                is PsiFileNode -> sb.append(FilenameUtils.getName(item.virtualFile!!.canonicalPath))
+            }
+            if (index + 1 != selectedItems.size) {
+                sb.append(";")
+            }
+        }
+        e.presentation.text = "${MessageUtils().messages("unPackFolderAction")} $sb"
     }
 
     override fun actionPerformed(event: AnActionEvent) {

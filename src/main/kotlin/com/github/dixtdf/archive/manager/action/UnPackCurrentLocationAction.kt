@@ -21,7 +21,16 @@ class UnPackCurrentLocationAction : AnAction() {
                 else -> false
             }
         }
-        e.presentation.text = MessageUtils().messages("unPackCurrentLocation")
+        val sb = StringBuilder()
+        selectedItems!!.forEachIndexed { index, item ->
+            when (item) {
+                is PsiFileNode -> sb.append(FilenameUtils.getName(item.virtualFile!!.canonicalPath))
+            }
+            if (index + 1 != selectedItems.size) {
+                sb.append(";")
+            }
+        }
+        e.presentation.text = "${MessageUtils().messages("unPackCurrentLocation")} $sb"
     }
 
     override fun actionPerformed(event: AnActionEvent) {

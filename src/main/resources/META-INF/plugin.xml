@@ -6,8 +6,9 @@
 
     <depends>com.intellij.modules.platform</depends>
 
-    <description><![CDATA[
-      <tag>ArchiveManager Allows compression and decompression directly within the project and direct viewing</tag>
+    <description>
+        ArchiveManager Allows compression and decompression directly within the project and direct viewing
+        <![CDATA[
       <h3>English:</h3>
       <ul>
       <li>Allows compression and decompression to occur directly within the project</li>

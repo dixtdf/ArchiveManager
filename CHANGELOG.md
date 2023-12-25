@@ -2,6 +2,12 @@
 
 # Changelog
 
+## [1.0.3] - 2023-12-25
+
+### Changed
+
+- 修改StringUtils包、修改最低版本
+
 ## [1.0.2] - 2023-12-1
 
 ### Changed
@@ -25,6 +31,7 @@
 - init
 
 [Unreleased]: https://github.com/dixtdf/ArchiveManager
+[1.0.3]: https://github.com/dixtdf/ArchiveManager
 [1.0.2]: https://github.com/dixtdf/ArchiveManager
 [1.0.1]: https://github.com/dixtdf/ArchiveManager
 [1.0.0]: https://github.com/dixtdf/ArchiveManager

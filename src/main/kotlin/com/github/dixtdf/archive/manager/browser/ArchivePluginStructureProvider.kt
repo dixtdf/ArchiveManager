@@ -10,7 +10,7 @@ import com.intellij.ide.projectView.impl.nodes.PsiFileNode
 import com.intellij.ide.util.treeView.AbstractTreeNode
 import com.intellij.openapi.vfs.LocalFileSystem
 import com.intellij.psi.PsiManager
-import org.apache.commons.lang.StringUtils
+import org.apache.commons.lang3.StringUtils
 
 class ArchivePluginStructureProvider : TreeStructureProvider {
 
